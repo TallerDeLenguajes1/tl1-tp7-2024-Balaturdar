@@ -4,6 +4,7 @@ nombres definido en el archivo Calculadora.cs, utilizando la palabra reservada u
 Realice una interfaz de usuario para operar la calculadora que permita continuar
 solicitando operaciones hasta que el usuario ingrese un comando de escape
 */
+/*
 using EspacioCalculadora;
 
 Calculadora calc = new Calculadora();
@@ -80,4 +81,13 @@ do{
     //}
 }while(opc != 6);
 
+*/
+using System.Reflection.PortableExecutable;
 
+public enum Cargos{
+    auxiliar,
+    administrativo,
+    ingeniero,
+    especialista,
+    investigador    
+}
