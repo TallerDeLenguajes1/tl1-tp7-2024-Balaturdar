@@ -16,6 +16,17 @@ public class Empleado{
     public double SueldoBasico { get => sueldoBasico; set => sueldoBasico = value; }
     public Cargos Cargo { get => cargo; set => cargo = value; }
 
+    public Empleado(string nombre, string apellido, DateTime fecNacimiento, DateTime ingresoEmpresa, char estadoCivil, double sueldoBasico, Cargos cargo)
+    {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fecNacimiento = fecNacimiento;
+        this.ingresoEmpresa = ingresoEmpresa;
+        this.estadoCivil = estadoCivil;
+        this.sueldoBasico = sueldoBasico;
+        this.cargo = cargo;
+    }
+
     public int Antiguedad(){
         return DateTime.Now.Year - ingresoEmpresa.Year;
     }
@@ -36,15 +47,9 @@ public class Empleado{
         add += (estadoCivil == 'C')? 150000:0;
         return add;
     }
-    public void Info()
+    public string Info()
     {
-        Console.WriteLine("nombre: "+Nombre);
-        Console.WriteLine("apellido: "+Apellido);
-        Console.WriteLine("fecha de nacimiento: "+FecNacimiento);
-        Console.WriteLine("estado civil: "+EstadoCivil);
-        Console.WriteLine("fecha de ingreso a la empresa: "+IngresoEmpresa);
-        Console.WriteLine("sueldo básico: "+SueldoBasico);
-        Console.WriteLine("cargo: "+cargo);
+        return "\nnombre: " + Nombre + "\napellido: " + Apellido + "\nfecha de nacimiento: " + FecNacimiento + "\nestado civil: " + EstadoCivil + "\nfecha de ingreso a la empresa: " + IngresoEmpresa + "\nsueldo básico: " + SueldoBasico + "\ncargo: " + cargo + "\nAntiguedad: " + Antiguedad() + "\nEdad: " + EdadEmpleado() + "\nAños para la jubilacion: " + AñosJubilacion();
     }
 }
 

@@ -83,11 +83,42 @@ do{
 
 */
 using System.Reflection.PortableExecutable;
+string[] nombres = {"Nahuel", "Luis", "Pedro"};
+string[] apellidos = {"Villafanie", "Sanchez", "Arue"};
+DateTime[] nacimientos = {new DateTime(1995, 2, 6), new DateTime(2001, 3, 14), new DateTime(1994, 11, 29)};
+char[] estadosCiviles = {'c', 's', 's'};
+DateTime[] ingresos = {new DateTime(2007, 8, 11), new DateTime(2019, 1, 12), new DateTime(2015, 4, 16)};
+double[] sueldosB = {650000, 545000, 703000};
+Cargos[] cargosEmp = {Cargos.ingeniero, Cargos.auxiliar, Cargos.especialista};
 
-public enum Cargos{
-    auxiliar,
-    administrativo,
-    ingeniero,
-    especialista,
-    investigador    
+Empleado[] empleados = new Empleado[]
+{
+    new Empleado(nombres[0],apellidos[0],nacimientos[0],ingresos[0],estadosCiviles[0],sueldosB[0],cargosEmp[0]),
+    new Empleado(nombres[1],apellidos[1],nacimientos[1],ingresos[1],estadosCiviles[1],sueldosB[1],cargosEmp[1]),
+    new Empleado(nombres[2],apellidos[2],nacimientos[2],ingresos[2],estadosCiviles[2],sueldosB[2],cargosEmp[2])
+};
+
+double montoTotal = 0;
+
+foreach (Empleado emp in empleados)
+{
+    //emp.Info();
+    montoTotal += emp.Salario();
+}
+Console.WriteLine($"Monto total en concepto de salarios: {montoTotal}");
+string nombreYApe = null;
+int aux=100;
+foreach (Empleado emp in empleados){
+    if(emp.AñosJubilacion()<aux){
+        nombreYApe = string.Concat(emp.Nombre, emp.Apellido);
+        aux = emp.AñosJubilacion();
+    }
+}
+if(nombreYApe != null){
+    foreach (Empleado emp in empleados)
+    {
+        if(nombreYApe.Equals(emp.Nombre+emp.Apellido)){
+            Console.WriteLine(emp.Info());
+        }
+    }
 }
